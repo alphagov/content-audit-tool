@@ -5,24 +5,8 @@ class Content::ItemDecorator < Draper::Decorator
     h.format_datetime(public_updated_at)
   end
 
-  def feedex_link
-    helpers.link_to "View feedback on FeedEx", "#{Plek.find('support')}/anonymous_feedback?path=#{object.base_path}"
-  end
-
-  def organisation_links
-    names = object.linked_organisations.collect do |organisation|
-      helpers.link_to(organisation.title, helpers.content_item_path(organisation.content_id))
-    end
-
-    names.join(', ').html_safe
-  end
-
   def assigned_to_name
     object.allocation ? object.allocation.user.name : 'No one'
-  end
-
-  def taxons_as_string
-    object.linked_taxons.map(&:title).join(', ')
   end
 
   def topics
