@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124132645) do
+ActiveRecord::Schema.define(version: 20180124154444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,9 @@ ActiveRecord::Schema.define(version: 20180124132645) do
     t.string "document_type"
     t.string "description"
     t.integer "one_month_page_views", default: 0
-    t.integer "number_of_pdfs", default: 0
     t.integer "six_months_page_views", default: 0
     t.string "publishing_app"
     t.string "locale", null: false
-    t.integer "number_of_word_files", default: 0
     t.index ["content_id"], name: "index_content_items_on_content_id", unique: true
     t.index ["title"], name: "index_content_items_on_title"
   end
