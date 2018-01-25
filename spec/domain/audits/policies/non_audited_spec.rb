@@ -4,7 +4,7 @@ module Audits
 
     let(:content_items) { create_list(:content_item, 2) }
     let(:audits) { create_list(:audit, 2) }
-    let(:scope) { Content::Item.all }
+    let(:scope) { Item.all }
 
     it 'returns a non audited scope' do
       expect(non_audited).to match_array(content_items)

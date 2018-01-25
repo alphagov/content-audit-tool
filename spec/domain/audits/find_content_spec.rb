@@ -81,9 +81,9 @@ module Audits
       subject(:relation) { described_class.users_unaudited_content(user.uid) }
 
       before do
-        create(:allocation, user: user, content_item: Content::Item.first)
-        create(:allocation, user: user, content_item: Content::Item.second)
-        create(:allocation, user: user, content_item: Content::Item.third)
+        create(:allocation, user: user, content_item: Item.first)
+        create(:allocation, user: user, content_item: Item.second)
+        create(:allocation, user: user, content_item: Item.third)
       end
 
       it 'returns my content' do
@@ -94,10 +94,10 @@ module Audits
     describe '#query' do
       subject(:relation) { described_class.query(filter) }
 
-      before { allow(Content::Query).to receive(:new) { query } }
+      before { allow(Query).to receive(:new) { query } }
 
       let(:filter) { Filter.new(allocated_to: 'anyone') }
-      let(:query) { spy('Content::Query') }
+      let(:query) { spy('Query') }
 
       it 'returns a content query based on the supplied filter' do
         relation

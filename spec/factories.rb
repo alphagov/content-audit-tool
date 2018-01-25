@@ -1,7 +1,7 @@
 require_relative "./factories/link_factory"
 
 FactoryBot.define do
-  factory :content_item, class: Content::Item do
+  factory :content_item, class: Item do
     transient do
       organisations nil
       primary_publishing_organisation nil
@@ -14,7 +14,7 @@ FactoryBot.define do
 
     sequence(:content_id) { |index| "content-id-%04i" % index }
     sequence(:title) { |index| "content-item-title-%04i" % index }
-    document_type { Audits::Plan.document_type_ids.sample }
+    document_type { Plan.document_type_ids.sample }
     sequence(:base_path) { |index| "api/content/item/path-%04i" % index }
     public_updated_at { Time.now }
     locale { "en" }
@@ -42,13 +42,13 @@ FactoryBot.define do
     end
   end
 
-  factory :link, class: Content::Link do
+  factory :link, class: Link do
     sequence(:source_content_id) { |i| "source-#{i}" }
     sequence(:target_content_id) { |i| "target-#{i}" }
     link_type "organisations"
   end
 
-  factory :audit, aliases: %i(passing_audit), class: Audits::Audit do
+  factory :audit, aliases: %i(passing_audit), class: Audit do
     content_item
     user
 
@@ -66,7 +66,7 @@ FactoryBot.define do
     end
   end
 
-  factory :allocation, class: Audits::Allocation do
+  factory :allocation, class: Allocation do
     content_item
     user
   end
@@ -114,7 +114,7 @@ FactoryBot.define do
     end
   end
 
-  factory :filter, class: Audits::Filter do
+  factory :filter, class: Filter do
     audit_status :all
     allocated_to :anyone
   end

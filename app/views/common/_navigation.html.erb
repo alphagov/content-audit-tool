@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs">
+  <%= navigation_link "All content", allocations_path, 'allocations' %>
+  <%= navigation_link "My content (#{@my_content_items_count})", my_content_path, 'audits'%>
+  <%= navigation_link "Audit progress", report_url, 'reports' %>
+</ul>

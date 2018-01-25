@@ -16,9 +16,9 @@ RSpec.feature "Analytics", type: :feature do
   context "Tracking select elements" do
     scenario "all select elements have a data-tracking-id attribute" do
       paths_to_check = [
-        audits_allocations_path,
-        audits_path,
-        audits_report_path,
+        allocations_path,
+        my_content_path,
+        report_path,
       ]
 
       paths_to_check.each do |path|
@@ -36,7 +36,7 @@ RSpec.feature "Analytics", type: :feature do
 
   context "Tracking information from the server" do
     scenario "the user's organisation is in the Google Tag Manager data layer", js: true do
-      visit audits_path
+      visit allocations_path
 
       data_layer = page.evaluate_script("dataLayer")
       expect(data_layer).to include("organisation" => "google-tag-manager")

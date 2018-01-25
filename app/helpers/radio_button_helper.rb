@@ -1,9 +1,9 @@
 module RadioButtonHelper
   def audit_status_radio_button_options(selected)
     options = [
-      { value: Audits::Audit::NON_AUDITED, label: 'Not audited' },
-      { value: Audits::Audit::AUDITED, label: 'Audited' },
-      { value: Audits::Audit::ALL, label: 'All' },
+      { value: Audit::NON_AUDITED, label: 'Not audited' },
+      { value: Audit::AUDITED, label: 'Audited' },
+      { value: Audit::ALL, label: 'All' },
     ]
 
     options.map.with_index do |option, index|
