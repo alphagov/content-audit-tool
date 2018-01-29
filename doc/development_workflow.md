@@ -64,10 +64,10 @@ As the Pull Request author:
 
 As a Developer:
 
-1. Create release notes in GitHub. 
+1. Create release notes in GitHub.
 
 2. Inform the product owner about the release so the relevant users can be informed.
 
 3. Deploy following the standard GOV.UK process.
 
-[deploy-to-heroku]: https://github.com/alphagov/content-performance-manager/blob/master/doc/deploy-to-heroku.md
+[deploy-to-heroku]: https://github.com/alphagov/content-audit-tool/blob/master/doc/deploy-to-heroku.md

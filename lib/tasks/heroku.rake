@@ -37,8 +37,8 @@ namespace :heroku do
     content_item_ids.concat(Item.where(document_type: 'topic').pluck(:content_id))
 
     ## Export Content Items and Links
-    system %{psql content_performance_manager_development -c "COPY (#{content_items_query(content_item_ids)}) TO STDOUT" > '#{content_items_file}'}
-    system %{psql content_performance_manager_development -c "COPY (#{links_query(content_item_ids, options)}) TO STDOUT" > '#{links_file}'}
+    system %{psql content_audit_tool_development -c "COPY (#{content_items_query(content_item_ids)}) TO STDOUT" > '#{content_items_file}'}
+    system %{psql content_audit_tool_development -c "COPY (#{links_query(content_item_ids, options)}) TO STDOUT" > '#{links_file}'}
 
     ## Clean-up data if this is a redeployment
     system %{heroku pg:psql -c "DELETE FROM ALLOCATIONS" --app #{app_name}}
@@ -58,11 +58,11 @@ namespace :heroku do
   end
 
   def content_items_file
-    '/var/govuk/content-performance-manager/tmp/content_items.sql'
+    '/var/govuk/content-audit-tool/tmp/content_items.sql'
   end
 
   def links_file
-    '/var/govuk/content-performance-manager/tmp/links.sql'
+    '/var/govuk/content-audit-tool/tmp/links.sql'
   end
 
   def content_items_query(content_item_ids)
