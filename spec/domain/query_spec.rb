@@ -1,4 +1,4 @@
-RSpec.describe Content::Query do
+RSpec.describe Query do
   describe "with some content tagged to organisations, policies and topics" do
     let!(:organisation_1) { create(:organisation) }
     let!(:organisation_2) { create(:organisation) }

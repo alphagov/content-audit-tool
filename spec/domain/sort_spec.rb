@@ -1,5 +1,5 @@
 RSpec.describe 'sorting' do
-  let(:query) { Content::Query.new }
+  let(:query) { Query.new }
 
   describe "sorting" do
     context "by page views (6 months)" do
