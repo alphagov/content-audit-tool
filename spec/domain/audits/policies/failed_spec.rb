@@ -4,7 +4,7 @@ module Audits
 
     let(:audits) { create_list(:audit, 2) }
     let(:failed_audits) { create_list(:failing_audit, 2) }
-    let(:scope) { Content::Item.all }
+    let(:scope) { Item.all }
 
     it 'returns content items that failed an audit' do
       expect(failed).to match_array(failed_audits.collect(&:content_item))

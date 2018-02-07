@@ -24,7 +24,7 @@ module Audits
         redirect_urls: "http://www.example.com"
       )
 
-      expect(Audits::Audit.find(audit_with_redirect_urls.id).redirect_urls).to eq("http://www.example.com")
+      expect(Audit.find(audit_with_redirect_urls.id).redirect_urls).to eq("http://www.example.com")
 
       attributes[:redundant] = false
       attributes[:redirect_urls] = "http://www.example.com"
@@ -37,7 +37,7 @@ module Audits
 
       expect(result.audit).to eq(audit_with_redirect_urls)
       expect(result.audit.redirect_urls).to be_empty
-      expect(Audits::Audit.find(audit_with_redirect_urls.id).redirect_urls).to be_empty
+      expect(Audit.find(audit_with_redirect_urls.id).redirect_urls).to be_empty
     end
 
     it "clears the similar content URLs when not similar to others" do
@@ -48,7 +48,7 @@ module Audits
         similar_urls: "http://www.similar.com"
       )
 
-      expect(Audits::Audit.find(audit_with_similar_content.id).similar_urls).to eq("http://www.similar.com")
+      expect(Audit.find(audit_with_similar_content.id).similar_urls).to eq("http://www.similar.com")
 
       attributes[:similar] = false
       attributes[:similar_urls] = "http://www.similar.com"

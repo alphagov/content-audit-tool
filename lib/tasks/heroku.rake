@@ -8,7 +8,7 @@ namespace :heroku do
     )
 
     ## Find the organisation
-    organisation = Content::Item.find_by!(title: options.organisation_name, document_type: "organisation")
+    organisation = Item.find_by!(title: options.organisation_name, document_type: "organisation")
 
     ## Application name
     app_name = "cpm-prototype-#{options.identifier}"
@@ -26,7 +26,7 @@ namespace :heroku do
     system %{heroku run rake db:migrate --app #{app_name}}
 
     ## Find the content items for the organisation
-    content_item_ids = Content::Query.new.
+    content_item_ids = Query.new.
       primary_organisation(organisation.content_id).
       content_items.
       limit(options.number_of_content_items).
@@ -34,11 +34,11 @@ namespace :heroku do
     content_item_ids.push(organisation.content_id)
 
     # Add topics
-    content_item_ids.concat(Content::Item.where(document_type: 'topic').pluck(:content_id))
+    content_item_ids.concat(Item.where(document_type: 'topic').pluck(:content_id))
 
     ## Export Content Items and Links
-    system %{psql content_performance_manager_development -c "COPY (#{content_items_query(content_item_ids)}) TO STDOUT" > '#{content_items_file}'}
-    system %{psql content_performance_manager_development -c "COPY (#{links_query(content_item_ids, options)}) TO STDOUT" > '#{links_file}'}
+    system %{psql content_audit_tool_development -c "COPY (#{content_items_query(content_item_ids)}) TO STDOUT" > '#{content_items_file}'}
+    system %{psql content_audit_tool_development -c "COPY (#{links_query(content_item_ids, options)}) TO STDOUT" > '#{links_file}'}
 
     ## Clean-up data if this is a redeployment
     system %{heroku pg:psql -c "DELETE FROM ALLOCATIONS" --app #{app_name}}
@@ -58,18 +58,18 @@ namespace :heroku do
   end
 
   def content_items_file
-    '/var/govuk/content-performance-manager/tmp/content_items.sql'
+    '/var/govuk/content-audit-tool/tmp/content_items.sql'
   end
 
   def links_file
-    '/var/govuk/content-performance-manager/tmp/links.sql'
+    '/var/govuk/content-audit-tool/tmp/links.sql'
   end
 
   def content_items_query(content_item_ids)
-    Content::Item.where(content_id: content_item_ids).to_sql
+    Item.where(content_id: content_item_ids).to_sql
   end
 
   def links_query(content_item_ids, options)
-    Content::Link.where(source_content_id: content_item_ids, link_type: options.link_types).to_sql
+    Link.where(source_content_id: content_item_ids, link_type: options.link_types).to_sql
   end
 end

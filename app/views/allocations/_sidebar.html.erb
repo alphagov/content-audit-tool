@@ -1,0 +1,11 @@
+<%= form_tag allocations_path, data: { test_id: 'allocations-sidebar' }, method: :get do %>
+  <%= render 'common/title' %>
+  <%= render 'common/allocated_to' %>
+  <%= render 'common/audit_status' %>
+  <%= render 'common/topics' %>
+  <%= render 'common/organisations' %>
+  <%= render 'common/primary' %>
+  <%= render 'common/document_type' %>
+  <%= render 'common/sort' %>
+  <%= render 'common/submit' %>
+<% end %>

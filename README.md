@@ -27,12 +27,12 @@ cd /var/govuk/govuk-puppet/development-vm
 Then run:
 
  ```bash
- bowl content-performance-manager
+ bowl content-audit-tool
  ```
 
 The application can be accessed from:
 
-http://content-performance-manager.dev.gov.uk
+http://content-audit-tool.dev.gov.uk
 
 To run the test suite:
  ```bash
@@ -65,7 +65,7 @@ database is restored when the container is created. See the
 information.
 
 ```commandline
-$ echo "DATABASE_BACKUP=/path/to/govuk-puppet/development-vm/replication/backups/postgresql/postgresql-primary-1.backend.integration/latest/content_performance_manager_production_XXXX-XX-XX_XXhXXm.Day.sql.gz" > .env
+$ echo "DATABASE_BACKUP=/path/to/govuk-puppet/development-vm/replication/backups/postgresql/postgresql-primary-1.backend.integration/latest/content_audit_tool_production_XXXX-XX-XX_XXhXXm.Day.sql.gz" > .env
 ```
 
 Create and start the containers:

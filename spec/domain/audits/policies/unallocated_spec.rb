@@ -8,7 +8,7 @@ module Audits
     it "returns unallocated content" do
       create :allocation, user: user, content_item: create(:content_item)
 
-      scope = Content::Item.all
+      scope = Item.all
       expect(subject.call(scope)).to match_array(unallocated)
     end
   end

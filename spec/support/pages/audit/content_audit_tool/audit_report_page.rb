@@ -1,7 +1,7 @@
 require 'site_prism/page'
 
 class AuditReportPage < SitePrism::Page
-  set_url '/audits/report'
+  set_url '/report'
 
   element :report_section, '[data-test-id=report-section]'
   element :audit_status, '[data-test-id=audit-status]'
