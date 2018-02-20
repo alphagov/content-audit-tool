@@ -110,7 +110,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.21)
     formatador (0.2.5)
-    gds-api-adapters (50.6.0)
+    gds-api-adapters (51.2.0)
+      addressable
       link_header
       lrucache (~> 0.1.1)
       null_logger
@@ -465,7 +466,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.4)
+    unf_ext (0.0.7.5)
     unicode-display_width (1.3.0)
     unicorn (5.3.1)
       kgio (~> 2.6)
