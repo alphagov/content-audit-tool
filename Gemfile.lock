@@ -143,7 +143,7 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
-    govspeak (5.4.0)
+    govspeak (5.5.0)
       actionview (>= 4.1, < 6)
       addressable (>= 2.3.8, < 3)
       commander (~> 4.4)
