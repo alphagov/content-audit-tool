@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124154444) do
+ActiveRecord::Schema.define(version: 20180327172855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180124154444) do
     t.integer "six_months_page_views", default: 0
     t.string "publishing_app"
     t.string "locale", null: false
+    t.index ["base_path"], name: "index_content_items_on_base_path"
     t.index ["content_id"], name: "index_content_items_on_content_id", unique: true
     t.index ["title"], name: "index_content_items_on_title"
   end
