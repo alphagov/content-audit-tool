@@ -73,10 +73,11 @@ RSpec.describe Importers::SingleContentItem do
     it "updates the content item" do
       content_item.save!
 
-      expect { subject.run(content_id, locale, version) }
-        .to change { content_item.reload.title }.from("title").to("new title")
-        .and change { content_item.reload.linked_taxons.to_a }.from([]).to([taxon1, taxon2])
-        .and change { content_item.reload.linked_organisations.to_a }.from([]).to([org1, org2])
+      subject.run(content_id, locale, version)
+
+      expect(content_item.reload.title).to eq("new title")
+      expect(content_item.linked_organisations.to_a).to eq([org2, org1])
+      expect(content_item.linked_taxons.to_a).to eq([taxon2, taxon1])
     end
 
     it "does not override `six_months_page_views` attributes" do
