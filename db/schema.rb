@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327172855) do
+ActiveRecord::Schema.define(version: 20180627101032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20180327172855) do
     t.string "locale", null: false
     t.index ["base_path"], name: "index_content_items_on_base_path"
     t.index ["content_id"], name: "index_content_items_on_content_id", unique: true
+    t.index ["document_type", "content_id", "six_months_page_views"], name: "index_content_items_on_document_type_content_id_ordered"
     t.index ["title"], name: "index_content_items_on_title"
   end
 
@@ -68,6 +69,8 @@ ActiveRecord::Schema.define(version: 20180327172855) do
     t.string "target_content_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["link_type", "source_content_id"], name: "index_links_on_link_type_and_source_content_id"
+    t.index ["link_type", "target_content_id"], name: "index_links_on_link_type_and_target_content_id"
     t.index ["link_type"], name: "index_links_on_link_type"
     t.index ["source_content_id"], name: "index_links_on_source_content_id"
     t.index ["target_content_id"], name: "index_links_on_target_content_id"
