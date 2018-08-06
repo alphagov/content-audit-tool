@@ -110,7 +110,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
     formatador (0.2.5)
-    gds-api-adapters (52.6.0)
+    gds-api-adapters (52.7.0)
       addressable
       link_header
       lrucache (~> 0.1.1)
