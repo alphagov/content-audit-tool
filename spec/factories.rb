@@ -3,13 +3,13 @@ require_relative "./factories/link_factory"
 FactoryBot.define do
   factory :content_item, class: Item do
     transient do
-      organisations nil
-      primary_publishing_organisation nil
-      parent nil
-      policies nil
-      policy_areas nil
-      topics nil
-      allocated_to nil
+      organisations { nil }
+      primary_publishing_organisation { nil }
+      parent { nil }
+      policies { nil }
+      policy_areas { nil }
+      topics { nil }
+      allocated_to { nil }
     end
 
     sequence(:content_id) { |index| "content-id-%04i" % index }
@@ -30,39 +30,39 @@ FactoryBot.define do
     end
 
     factory :organisation do
-      document_type "organisation"
+      document_type { "organisation" }
     end
 
     factory :policy do
-      document_type "policy"
+      document_type { "policy" }
     end
 
     factory :topic do
-      document_type "topic"
+      document_type { "topic" }
     end
   end
 
   factory :link, class: Link do
     sequence(:source_content_id) { |i| "source-#{i}" }
     sequence(:target_content_id) { |i| "target-#{i}" }
-    link_type "organisations"
+    link_type { "organisations" }
   end
 
   factory :audit, aliases: %i(passing_audit), class: Audit do
     content_item
     user
 
-    change_attachments false
-    change_body false
-    change_description false
-    change_title false
-    outdated false
-    redundant false
-    reformat false
-    similar false
+    change_attachments { false }
+    change_body { false }
+    change_description { false }
+    change_title { false }
+    outdated { false }
+    redundant { false }
+    reformat { false }
+    similar { false }
 
     factory :failing_audit do
-      redundant true
+      redundant { true }
     end
   end
 
@@ -73,14 +73,14 @@ FactoryBot.define do
 
   factory :user do
     transient do
-      organisation nil
+      organisation { nil }
     end
 
     sequence(:uid) { |i| "user-#{i}" }
     sequence(:name) { |i| "Test User #{i}" }
-    email 'user@example.com'
+    email { 'user@example.com' }
     permissions { ['signin'] }
-    organisation_slug "government-digital-service"
+    organisation_slug { "government-digital-service" }
 
     trait :with_allocated_content do
       after(:create) do |user|
@@ -115,7 +115,7 @@ FactoryBot.define do
   end
 
   factory :filter, class: Filter do
-    audit_status :all
-    allocated_to :anyone
+    audit_status { :all }
+    allocated_to { :anyone }
   end
 end
