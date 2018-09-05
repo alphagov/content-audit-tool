@@ -50,10 +50,10 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'govuk-lint', '3.8.0'
+  gem 'govuk_test'
   gem 'guard-rspec', require: false
   gem 'listen'
   gem 'phantomjs'
-  gem 'poltergeist'
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
