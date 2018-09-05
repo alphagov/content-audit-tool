@@ -13,7 +13,6 @@ require "rspec/rails"
 require "support/authentication"
 require "support/google_analytics_factory"
 require "webmock/rspec"
-require "capybara/poltergeist"
 require "gds_api/test_helpers/publishing_api_v2"
 require "pry"
 require "database_cleaner"
@@ -37,7 +36,7 @@ RSpec.configure do |config|
     ActiveRecord::Migration.maintain_test_schema!
     Rails.application.load_tasks
     WebMock.disable_net_connect!(allow_localhost: true)
-    Capybara.javascript_driver = :poltergeist
+    GovukTest.configure
     DatabaseCleaner.clean_with(:truncation)
   end
 
