@@ -76,8 +76,8 @@ RSpec.describe Importers::SingleContentItem do
       subject.run(content_id, locale, version)
 
       expect(content_item.reload.title).to eq("new title")
-      expect(content_item.linked_organisations.to_a).to eq([org2, org1])
-      expect(content_item.linked_taxons.to_a).to eq([taxon2, taxon1])
+      expect(content_item.linked_organisations.to_a).to match_array([org2, org1])
+      expect(content_item.linked_taxons.to_a).to match_array([taxon2, taxon1])
     end
 
     it "does not override `six_months_page_views` attributes" do
