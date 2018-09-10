@@ -1,7 +1,7 @@
 module Policies
   class Unallocated
     def self.call(scope, allocated_to: nil) # rubocop:disable Lint/UnusedMethodArgument
-      scope.where('content_items.content_id not in (select content_id from allocations)')
+      scope.left_outer_joins(:allocation).where(allocations: { content_id: nil })
     end
   end
 end
