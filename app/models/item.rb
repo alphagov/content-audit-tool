@@ -39,6 +39,7 @@ class Item < ApplicationRecord
 
   def whitehall_url
     return unless publishing_app == "whitehall"
+
     "#{WHITEHALL}/government/admin/by-content-id/#{content_id}"
   end
 

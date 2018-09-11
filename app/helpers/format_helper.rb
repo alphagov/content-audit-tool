@@ -2,32 +2,32 @@ module FormatHelper
   include ActionView::Helpers::DateHelper
   include ActionView::Helpers::NumberHelper
 
-  def format_number(n)
-    number_with_delimiter(n, delimiter: ",")
+  def format_number(number)
+    number_with_delimiter(number, delimiter: ",")
   end
 
-  def format_percentage(p, precision: 0)
+  def format_percentage(percentage, precision: 0)
     number_with_precision(
-      p,
+      percentage,
       precision: precision,
       strip_insignificant_zeros: true,
     ) + "%"
   end
 
-  def format_datetime(d, relative: true)
-    return "Never" unless d
+  def format_datetime(datetime, relative: true)
+    return "Never" unless datetime
 
-    date = d.to_date.to_s(:short)
-    time_ago = time_ago_in_words(d)
+    date = datetime.to_date.to_s(:short)
+    time_ago = time_ago_in_words(datetime)
 
     relative ? "#{date} (#{time_ago} ago)" : date
   end
 
-  def format_boolean(b)
-    b ? "Yes" : "No"
+  def format_boolean(boolean)
+    boolean ? "Yes" : "No"
   end
 
-  def format_array(arr)
-    arr.any? ? arr.join(", ") : "None"
+  def format_array(array)
+    array.any? ? array.join(", ") : "None"
   end
 end

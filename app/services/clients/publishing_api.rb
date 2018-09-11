@@ -41,7 +41,7 @@ module Clients
         document_type: options[:document_type],
         order: options[:order] || '-public_updated_at',
         q: options[:q] || '',
-        states: ['published'],
+        states: %w(published),
         per_page: per_page,
         fields: fields || []
       }

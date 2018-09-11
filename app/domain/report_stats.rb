@@ -47,6 +47,7 @@ private
 
   def percentage(number, out_of:)
     return 0 if out_of.zero?
+
     number.to_f / out_of * 100
   end
 end
