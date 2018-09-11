@@ -41,11 +41,13 @@ module Proxies
       url = link['href']
       matches = %r{^/(?<path>.*)}.match(url)
       return unless matches
+
       link['href'] = "https://www.gov.uk/#{matches[:path]}"
     end
 
     def open_link_in_new_tab!(link)
       return if link['href'].start_with?('#')
+
       link['target'] = "_blank"
       link['rel'] = [link['rel'], "noopener noreferrer"].join
     end
