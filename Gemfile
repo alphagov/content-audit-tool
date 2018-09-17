@@ -46,7 +46,6 @@ end
 group :development, :test do
   gem 'active_record_disabler'
   gem 'byebug'
-  gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'govuk-lint', '3.9.0'
