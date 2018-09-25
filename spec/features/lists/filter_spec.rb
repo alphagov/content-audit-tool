@@ -365,13 +365,13 @@ private
 
   def then_the_organisation_filter_is_filled_with_the_suggestion_chosen
     @audit_content_page.filter_form do |form|
-      expect(form).to have_field("Organisations", with: "HMRC")
+      expect(form).to have_field("Organisations", with: "HMRC", wait: 1)
     end
   end
 
   def then_the_topic_filter_is_filled_with_the_suggestion_chosen
     @audit_content_page.filter_form do |form|
-      expect(form).to have_field("Topics", with: "Business tax: PAYE")
+      expect(form).to have_field("Topics", with: "Business tax: PAYE", wait: 1)
     end
   end
 
@@ -508,8 +508,7 @@ private
       @audits_filter_list = ContentAuditTool.new.audits_filter_list
     end
 
-    expect(@audits_filter_list.wait_for_listings(count: 1))
-    expect(@audits_filter_list.list).to have_text("Tree felling")
+    expect(@audits_filter_list.list).to have_text("Tree felling", wait: 1)
   end
 
   def and_does_not_show_content_of_other_types
