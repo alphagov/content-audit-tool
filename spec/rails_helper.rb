@@ -61,8 +61,4 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-SitePrism.configure do |config|
-  config.use_implicit_waits = true
-end
-
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }

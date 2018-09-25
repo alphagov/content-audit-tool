@@ -169,8 +169,8 @@ private
 
   def and_unaudited_content_not_allocated_to_me_is_not_shown
     @audits_filter_list.listings.each do |listing|
-      expect(listing).to have_no_title(text: "The Secret Seven")
-      expect(listing).to have_no_title(text: "The Wishing Chair")
+      expect(listing.title).to_not have_text("The Secret Seven")
+      expect(listing.title).to_not have_text("The Wishing Chair")
     end
   end
 
@@ -253,9 +253,9 @@ private
 
   def and_the_filtered_list_does_not_show_unaudited_content
     @audits_filter_list.listings.each do |listing|
-      expect(listing).to have_no_title(text: "Forest management")
-      expect(listing).to have_no_title(text: "Travel insurance")
-      expect(listing).to have_no_title(text: "VAT")
+      expect(listing.title).to_not have_text("Forest management")
+      expect(listing.title).to_not have_text("Travel insurance")
+      expect(listing.title).to_not have_text("VAT")
     end
   end
 
@@ -295,9 +295,9 @@ private
 
   def and_does_not_show_other_department_content
     @audits_filter_list.listings.each do |listing|
-      expect(listing).to have_no_title(text: "Tree felling")
-      expect(listing).to have_no_title(text: "Forest management")
-      expect(listing).to have_no_title(text: "Travel insurance")
+      expect(listing.title).to_not have_text("Tree felling")
+      expect(listing.title).to_not have_text("Forest management")
+      expect(listing.title).to_not have_text("Travel insurance")
     end
   end
 
@@ -322,8 +322,8 @@ private
 
   def and_the_list_does_not_show_content_for_other_orgs
     @audits_filter_list.listings.each do |listing|
-      expect(listing).to have_no_title(text: "Tree felling")
-      expect(listing).to have_no_title(text: "Forest management")
+      expect(listing.title).to_not have_text("Tree felling")
+      expect(listing.title).to_not have_text("Forest management")
     end
   end
 
@@ -365,13 +365,13 @@ private
 
   def then_the_organisation_filter_is_filled_with_the_suggestion_chosen
     @audit_content_page.filter_form do |form|
-      expect(form).to have_field("Organisations", with: "HMRC")
+      expect(form).to have_field("Organisations", with: "HMRC", wait: 1)
     end
   end
 
   def then_the_topic_filter_is_filled_with_the_suggestion_chosen
     @audit_content_page.filter_form do |form|
-      expect(form).to have_field('Topics', with: 'Business tax: PAYE')
+      expect(form).to have_field("Topics", with: "Business tax: PAYE", wait: 1)
     end
   end
 
@@ -486,7 +486,7 @@ private
 
   def and_does_not_show_other_content_that_do_not_match
     @audits_filter_list.listings.each do |listing|
-      expect(listing).to have_no_title(text: "another text")
+      expect(listing.title).to_not have_text("another text")
     end
   end
 
@@ -508,8 +508,7 @@ private
       @audits_filter_list = ContentAuditTool.new.audits_filter_list
     end
 
-    expect(@audits_filter_list.wait_for_listings(count: 1))
-    expect(@audits_filter_list.list).to have_text("Tree felling")
+    expect(@audits_filter_list.list).to have_text("Tree felling", wait: 1)
   end
 
   def and_does_not_show_content_of_other_types
