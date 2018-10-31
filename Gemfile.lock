@@ -117,7 +117,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     formatador (0.2.5)
-    gds-api-adapters (53.1.0)
+    gds-api-adapters (53.2.0)
       addressable
       link_header
       null_logger
