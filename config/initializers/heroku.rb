@@ -20,7 +20,7 @@ if Heroku.enabled?
       session[:heroku_user_id] ||= User.first.id
     end
 
-    private
+  private
 
     def force_development!
       if Rails.env.production?
