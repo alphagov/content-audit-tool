@@ -47,7 +47,7 @@ group :development, :test do
   gem 'byebug'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'govuk-lint', '3.11.0'
+  gem 'govuk-lint', '3.11.1'
   gem 'govuk_test'
   gem 'guard-rspec', require: false
   gem 'listen'
