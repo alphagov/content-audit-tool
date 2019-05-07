@@ -41,8 +41,9 @@ module Audits
       it "doesn't execute N+1 queries" do
         ActiveRecord.disable
 
-        expect { Report.generate(filter, url) }.not_to raise_error,
-          'Should not have tried to execute a query after initializing Report'
+        expect {
+          Report.generate(filter, url)
+        }.not_to raise_error, 'Should not have tried to execute a query after initializing Report'
       end
     end
 

@@ -24,9 +24,9 @@ RSpec.feature "Export to CSV" do
   def given_i_am_an_auditor_belonging_to_an_organisation
     @user = create(:user)
     @hmrc = create(:content_item,
-                  title: "HMRC",
-                  document_type: "organisation",
-                  allocated_to: @user)
+                   title: "HMRC",
+                   document_type: "organisation",
+                   allocated_to: @user)
   end
 
   def then_i_receive_only_hmrc_related_content_items_in_the_report
