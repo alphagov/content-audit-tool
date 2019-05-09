@@ -156,7 +156,7 @@ GEM
       nokogiri (~> 1.5)
       rinku (~> 2.0)
       sanitize (~> 5)
-    govuk-lint (3.11.1)
+    govuk-lint (3.11.2)
       rubocop (~> 0.64)
       rubocop-rspec (~> 1.28)
       scss_lint
@@ -529,7 +529,7 @@ DEPENDENCIES
   gds-sso
   google-api-client (~> 0.29)
   govspeak
-  govuk-lint (= 3.11.1)
+  govuk-lint (= 3.11.2)
   govuk_admin_template (~> 6.7)
   govuk_app_config
   govuk_sidekiq
