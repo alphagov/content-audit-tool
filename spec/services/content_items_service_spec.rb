@@ -72,8 +72,8 @@ RSpec.describe ItemsService do
   describe "#links" do
     it "returns an array of link objects" do
       allow(subject.client).to receive(:links).with("id-123").and_return(
-        organisations: ["id-456", "id-789"],
-        policies: ["id-111"],
+        organisations: %w(id-456 id-789),
+        policies: %w(id-111),
       )
 
       links = subject.links("id-123")

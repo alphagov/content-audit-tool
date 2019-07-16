@@ -13,7 +13,6 @@ Filter = Struct.new(
   :title,
   :topics
 ) do
-
   def initialize(hash = {})
     hash.each do |key, value|
       self[key] = value
