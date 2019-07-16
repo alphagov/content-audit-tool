@@ -49,7 +49,7 @@ RSpec.describe Clients::PublishingAPI do
   end
 
   describe "#links" do
-    let(:links) { { organisation: ["org-123"] } }
+    let(:links) { { organisation: %w(org-123) } }
 
     before do
       publishing_api_has_links(content_id: "id-123", links: links)

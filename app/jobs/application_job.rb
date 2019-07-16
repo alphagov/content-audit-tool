@@ -24,7 +24,7 @@ class ApplicationJob
 
   def perform(*args)
     run(*args)
-  rescue *ERRORS_TO_RETRY_WITHOUT_ALERTS # rubocop:disable Naming/RescuedExceptionsVariableName
+  rescue *ERRORS_TO_RETRY_WITHOUT_ALERTS
     raise RetryableError
   end
 

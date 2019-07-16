@@ -80,14 +80,14 @@ RSpec.describe 'sorting' do
         query
           .sort(:document_type)
           .sort_direction(:asc)
-        expect(query.content_items.pluck(:document_type)).to eq ["DOC-TYPE-AAA", "DOC-TYPE-BBB"]
+        expect(query.content_items.pluck(:document_type)).to eq %w(DOC-TYPE-AAA DOC-TYPE-BBB)
       end
 
       it "sorts in descending order" do
         query
           .sort(:document_type)
           .sort_direction(:desc)
-        expect(query.content_items.pluck(:document_type)).to eq ["DOC-TYPE-BBB", "DOC-TYPE-AAA"]
+        expect(query.content_items.pluck(:document_type)).to eq %w(DOC-TYPE-BBB DOC-TYPE-AAA)
       end
     end
 
