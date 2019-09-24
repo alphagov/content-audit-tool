@@ -27,7 +27,7 @@ class FindContent
   def self.users_unaudited_content(current_user_uid)
     filter = Filter.new(
       allocated_to: current_user_uid,
-      audit_status: Audit::NON_AUDITED
+      audit_status: Audit::NON_AUDITED,
     )
     self.all(filter)
   end

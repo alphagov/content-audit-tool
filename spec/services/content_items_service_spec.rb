@@ -1,5 +1,5 @@
 RSpec.describe ItemsService do
-  let(:client) { double('client') }
+  let(:client) { double("client") }
 
   before do
     subject.client = client
@@ -40,7 +40,7 @@ RSpec.describe ItemsService do
 
     it "returns the first locale if 'en' is not available" do
       expect(subject.fetch_all_with_default_locale_only).to include(
-        content_id: "c", locale: "cy"
+        content_id: "c", locale: "cy",
       )
     end
   end

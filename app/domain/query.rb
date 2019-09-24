@@ -151,8 +151,8 @@ private
       sort_field.send(comparison, @after[@sort])
         .or(
           sort_field.eq(@after[@sort])
-            .and(content_id_field.send(comparison, @after[:content_id]))
-        )
+            .and(content_id_field.send(comparison, @after[:content_id])),
+        ),
     )
   end
 

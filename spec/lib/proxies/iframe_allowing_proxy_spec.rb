@@ -5,52 +5,52 @@ RSpec.describe Proxies::IframeAllowingProxy do
     @headers = {}
   end
 
-  describe '#rewrite_response' do
-    context 'the page contains html' do
+  describe "#rewrite_response" do
+    context "the page contains html" do
       before :each do
-        @headers['content-type'] = ['text/html; charset=utf-8']
+        @headers["content-type"] = ["text/html; charset=utf-8"]
       end
 
-      context 'body contains an <a> tag with an absolute URL' do
+      context "body contains an <a> tag with an absolute URL" do
         before :each do
           @response_body = proxied_body('<a href="/absolute/path"></a>')
         end
 
-        it 'prepends the URL with GOV.UK' do
+        it "prepends the URL with GOV.UK" do
           expect(@response_body).to include('href="https://www.gov.uk/absolute/path"')
         end
 
-        it 'opens the URL in a new tab' do
+        it "opens the URL in a new tab" do
           expect(@response_body).to include('target="_blank"')
           expect(@response_body).to include('rel="noopener noreferrer"')
         end
       end
 
-      context 'body contains an <a> tag with a full URL' do
+      context "body contains an <a> tag with a full URL" do
         before :each do
           @response_body = proxied_body('<a href="https://assets.publishing.service.gov.uk/static/"></a>')
         end
 
-        it 'does not rewrite the URL' do
+        it "does not rewrite the URL" do
           expect(@response_body).to include('href="https://assets.publishing.service.gov.uk/static/"')
         end
 
-        it 'opens the URL in a new tab' do
+        it "opens the URL in a new tab" do
           expect(@response_body).to include('target="_blank"')
           expect(@response_body).to include('rel="noopener noreferrer"')
         end
       end
 
-      context 'body contains an <a> tag with an anchor' do
+      context "body contains an <a> tag with an anchor" do
         before :each do
           @response_body = proxied_body('<a href="#content"></a>')
         end
 
-        it 'does not rewrite the URL' do
+        it "does not rewrite the URL" do
           expect(@response_body).to include('href="#content"')
         end
 
-        it 'does not open the URL in a new tab' do
+        it "does not open the URL in a new tab" do
           expect(@response_body).to_not include('target="_blank"')
         end
       end

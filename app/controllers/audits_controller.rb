@@ -7,7 +7,7 @@ class AuditsController < BaseController
         params[:allocated_to] ||= current_user.uid
         params[:audit_status] ||= Audit::NON_AUDITED
         params[:organisations] ||= [current_user.organisation_content_id]
-        params[:primary] = 'true' unless params.key?(:primary)
+        params[:primary] = "true" unless params.key?(:primary)
 
         @my_content_items_count = FindContent.users_unaudited_content(current_user.uid).count
         @content_items = FindContent.paged(params_to_filter)
@@ -17,7 +17,7 @@ class AuditsController < BaseController
       format.csv do
         send_data(
           Report.generate(params_to_filter, request.url),
-          filename: "Transformation_audit_report_CSV_download.csv"
+          filename: "Transformation_audit_report_CSV_download.csv",
         )
       end
     end
@@ -33,7 +33,7 @@ class AuditsController < BaseController
     result = SaveAudit.call(
       attributes: audit_params,
       content_id: params.fetch(:content_item_content_id),
-      user_uid: current_user.uid
+      user_uid: current_user.uid,
     )
 
     @content_item = result.content_item
@@ -73,7 +73,7 @@ private
           reformat
           similar
           similar_urls
-        )
+        ),
       )
   end
 end

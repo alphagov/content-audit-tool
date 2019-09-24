@@ -1,11 +1,11 @@
 namespace :heroku do
   task :deploy, %i[identifier organisation_name number_of_content_items link_types] => :environment do |_task, options|
-    raise 'Invalid parameters' unless options.identifier
+    raise "Invalid parameters" unless options.identifier
 
     options.with_defaults(
       link_types: %w(organisations primary_publishing_organisation topics parent),
       number_of_content_items: 1000,
-      organisation_name: 'HM Revenue & Customs',
+      organisation_name: "HM Revenue & Customs",
     )
 
     ## Find the organisation
@@ -35,7 +35,7 @@ namespace :heroku do
     content_item_ids.push(organisation.content_id)
 
     # Add topics
-    content_item_ids.concat(Item.where(document_type: 'topic').pluck(:content_id))
+    content_item_ids.concat(Item.where(document_type: "topic").pluck(:content_id))
 
     ## Export Content Items and Links
     system %{psql content_audit_tool_development -c "COPY (#{content_items_query(content_item_ids)}) TO STDOUT" > '#{content_items_file}'}
@@ -59,11 +59,11 @@ namespace :heroku do
   end
 
   def content_items_file
-    '/var/govuk/content-audit-tool/tmp/content_items.sql'
+    "/var/govuk/content-audit-tool/tmp/content_items.sql"
   end
 
   def links_file
-    '/var/govuk/content-audit-tool/tmp/links.sql'
+    "/var/govuk/content-audit-tool/tmp/links.sql"
   end
 
   def content_items_query(content_item_ids)

@@ -24,7 +24,7 @@ if Heroku.enabled?
 
     def force_development!
       if Rails.env.production?
-        raise 'This code should never run in production'
+        raise "This code should never run in production"
       end
     end
   end

@@ -1,4 +1,4 @@
-require 'google/apis/analyticsreporting_v4'
+require "google/apis/analyticsreporting_v4"
 
 
 module GoogleAnalytics
@@ -15,7 +15,7 @@ module GoogleAnalytics
           {
             base_path: row.dimensions.first,
             one_month_page_views: row.metrics.first.values.first.to_i,
-            six_months_page_views: row.metrics.second.values.first.to_i
+            six_months_page_views: row.metrics.second.values.first.to_i,
           }
         end
       end

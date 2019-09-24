@@ -1,6 +1,6 @@
 class Heroku
   def self.enabled?
-    Rails.env.development? && ENV['RUNNING_IN_HEROKU'].present?
+    Rails.env.development? && ENV["RUNNING_IN_HEROKU"].present?
   end
 
   def self.create_users(organisation_id)

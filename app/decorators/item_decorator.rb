@@ -6,7 +6,7 @@ class ItemDecorator < Draper::Decorator
   end
 
   def assigned_to_name
-    object.allocation ? object.allocation.user.name : 'No one'
+    object.allocation ? object.allocation.user.name : "No one"
   end
 
   def topics

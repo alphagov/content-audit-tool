@@ -1,4 +1,4 @@
-require 'google/apis/analyticsreporting_v4'
+require "google/apis/analyticsreporting_v4"
 
 
 module GoogleAnalytics
@@ -16,7 +16,7 @@ module GoogleAnalytics
               request.dimension_filter_clauses = filters(args[:base_paths], page_path)
               request.dimensions = dimensions(page_path)
               request.date_ranges = date_ranges(args[:start_dates], end_date)
-            end
+            end,
           )
         end
       end

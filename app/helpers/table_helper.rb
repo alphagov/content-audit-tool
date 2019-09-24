@@ -25,7 +25,7 @@ module TableHelper
     def header_link(order)
       link_options = view.filter_params.merge(
         sort: attribute,
-        order: order
+        order: order,
       )
 
       link_to content_items_path(link_options) do

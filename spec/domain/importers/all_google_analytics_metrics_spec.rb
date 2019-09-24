@@ -18,10 +18,10 @@ RSpec.describe Importers::AllGoogleAnalyticsMetrics do
     end
 
     it "ignores nil basepaths" do
-      create(:content_item, base_path: '/base-path')
+      create(:content_item, base_path: "/base-path")
       create(:content_item, base_path: nil)
 
-      expect(ImportPageviewsJob).to receive(:perform_async).with(['/base-path'])
+      expect(ImportPageviewsJob).to receive(:perform_async).with(["/base-path"])
 
       subject.run
     end

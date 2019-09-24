@@ -1,4 +1,4 @@
-require 'gds_api/publishing_api_v2'
+require "gds_api/publishing_api_v2"
 
 module Clients
   class PublishingAPI
@@ -8,9 +8,9 @@ module Clients
 
     def initialize
       @publishing_api = GdsApi::PublishingApiV2.new(
-        Plek.new.find('publishing-api'),
+        Plek.new.find("publishing-api"),
         disable_cache: true,
-        bearer_token: ENV['PUBLISHING_API_BEARER_TOKEN'] || 'example',
+        bearer_token: ENV["PUBLISHING_API_BEARER_TOKEN"] || "example",
       )
       @per_page = 100
     end
@@ -39,11 +39,11 @@ module Clients
     def build_base_query(fields, options)
       {
         document_type: options[:document_type],
-        order: options[:order] || '-public_updated_at',
-        q: options[:q] || '',
+        order: options[:order] || "-public_updated_at",
+        q: options[:q] || "",
         states: %w(published),
         per_page: per_page,
-        fields: fields || []
+        fields: fields || [],
       }
     end
 

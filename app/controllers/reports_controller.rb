@@ -12,6 +12,6 @@ private
     params[:allocated_to] ||= current_user.uid
     params[:audit_status] ||= Audit::ALL
     params[:organisations] ||= [current_user.organisation_content_id]
-    params[:primary] = 'true' unless params.key?(:primary)
+    params[:primary] = "true" unless params.key?(:primary)
   end
 end

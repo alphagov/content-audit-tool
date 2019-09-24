@@ -8,25 +8,25 @@ module GoogleAnalyticsFactory
               rows && rows.map do |response|
                 Google::Apis::AnalyticsreportingV4::ReportRow.new(
                   dimensions: [
-                    response.fetch(:base_path)
+                    response.fetch(:base_path),
                   ],
                   metrics: [
                     Google::Apis::AnalyticsreportingV4::DateRangeValues.new(
                       values: [
-                        response.fetch(:one_month_page_views)
-                      ]
+                        response.fetch(:one_month_page_views),
+                      ],
                     ),
                     Google::Apis::AnalyticsreportingV4::DateRangeValues.new(
                       values: [
-                        response.fetch(:six_months_page_views)
-                      ]
-                    )
-                  ]
+                        response.fetch(:six_months_page_views),
+                      ],
+                    ),
+                  ],
                 )
-              end
-          )
-        )
-      ]
+              end,
+          ),
+        ),
+      ],
     )
   end
 end
