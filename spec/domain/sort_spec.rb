@@ -1,13 +1,13 @@
-RSpec.describe 'sorting' do
+RSpec.describe "sorting" do
   let(:query) { Query.new }
 
   describe "sorting" do
     context "by page views (6 months)" do
       before do
-        create(:content_item, six_months_page_views: 0, content_id: 'b')
-        create(:content_item, six_months_page_views: 0, content_id: 'a')
-        create(:content_item, six_months_page_views: 0, content_id: 'c')
-        create(:content_item, six_months_page_views: 999, content_id: 'z')
+        create(:content_item, six_months_page_views: 0, content_id: "b")
+        create(:content_item, six_months_page_views: 0, content_id: "a")
+        create(:content_item, six_months_page_views: 0, content_id: "c")
+        create(:content_item, six_months_page_views: 999, content_id: "z")
 
         query.sort(:six_months_page_views)
       end
@@ -24,7 +24,7 @@ RSpec.describe 'sorting' do
 
       it "breaks ties on ascending base path" do
         query.sort_direction(:asc)
-        expect(query.content_items.pluck(:content_id)).to contain_exactly('a', 'b', 'c', 'z')
+        expect(query.content_items.pluck(:content_id)).to contain_exactly("a", "b", "c", "z")
       end
     end
 

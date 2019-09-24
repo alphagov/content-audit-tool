@@ -19,11 +19,11 @@ class AuditContentPage < SitePrism::Page
     element :add_topics, "[data-test-id=add-topic]"
     element :document_type, "[data-test-id=document-type]"
     element :apply_filters, "[data-test-id=apply-filters]"
-    element :audits_progress_tab, '[data-test-id=reports]'
+    element :audits_progress_tab, "[data-test-id=reports]"
   end
 
   element :pagination, ".pagination"
-  element :audits_progress_tab, '[data-test-id=reports]'
-  element :my_content_tab, '[data-test-id=audits]'
-  element :assign_content_tab, '[data-test-id=allocations]'
+  element :audits_progress_tab, "[data-test-id=reports]"
+  element :my_content_tab, "[data-test-id=audits]"
+  element :assign_content_tab, "[data-test-id=allocations]"
 end

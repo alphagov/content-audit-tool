@@ -7,7 +7,7 @@ AllocationResult = Struct.new(:user, :count) do
     if success?
       "#{count} #{'item'.pluralize(count)} assigned to #{user}"
     else
-      'You did not select any content to be assigned'
+      "You did not select any content to be assigned"
     end
   end
 end

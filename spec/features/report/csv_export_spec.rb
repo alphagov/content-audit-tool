@@ -57,8 +57,8 @@ RSpec.feature "Export to CSV" do
   def and_a_filter_is_applied_to_show_only_audited_hmrc_content_items
     @audit_report = ContentAuditTool.new.audit_report_page
     @audit_report.load
-    @audit_report.organisations.select 'HMRC'
-    @audit_report.audit_status.choose 'Audited'
+    @audit_report.organisations.select "HMRC"
+    @audit_report.audit_status.choose "Audited"
     @audit_report.apply_filters.click
   end
 

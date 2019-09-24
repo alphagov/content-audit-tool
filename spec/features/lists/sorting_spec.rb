@@ -11,7 +11,7 @@ RSpec.feature "Sort content items to audit", type: :feature do
 
     visit my_content_path
 
-    rows = page.all('main tbody tr')
+    rows = page.all("main tbody tr")
     expect(rows[0].text).to match("item2")
     expect(rows[1].text).to match("item1")
   end
@@ -27,7 +27,7 @@ RSpec.feature "Sort content items to audit", type: :feature do
     select "Title A-Z", from: "sort_by"
     click_on "Apply filters"
 
-    rows = page.all('main tbody tr')
+    rows = page.all("main tbody tr")
     expect(rows[0].text).to match("AAA")
     expect(rows[1].text).to match("BBB")
     expect(rows[2].text).to match("CCC")
@@ -44,7 +44,7 @@ RSpec.feature "Sort content items to audit", type: :feature do
     select "Title Z-A", from: "sort_by"
     click_on "Apply filters"
 
-    rows = page.all('main tbody tr')
+    rows = page.all("main tbody tr")
     expect(rows[0].text).to match("CCC")
     expect(rows[1].text).to match("BBB")
     expect(rows[2].text).to match("AAA")

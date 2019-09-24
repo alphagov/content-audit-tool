@@ -8,7 +8,7 @@ module Audits
       result = SaveAudit.call(
         attributes: attributes,
         content_id: content_item.content_id,
-        user_uid: user.uid
+        user_uid: user.uid,
       )
 
       expect(result.audit).to have_attributes(change_title: false)
@@ -21,7 +21,7 @@ module Audits
       audit_with_redirect_urls = create(
         :failing_audit,
         content_item: redundant_content_item,
-        redirect_urls: "http://www.example.com"
+        redirect_urls: "http://www.example.com",
       )
 
       expect(Audit.find(audit_with_redirect_urls.id).redirect_urls).to eq("http://www.example.com")
@@ -32,7 +32,7 @@ module Audits
       result = SaveAudit.call(
         attributes: attributes,
         content_id: redundant_content_item.content_id,
-        user_uid: user.uid
+        user_uid: user.uid,
       )
 
       expect(result.audit).to eq(audit_with_redirect_urls)
@@ -45,7 +45,7 @@ module Audits
       audit_with_similar_content = create(
         :failing_audit,
         content_item: similar_content_item,
-        similar_urls: "http://www.similar.com"
+        similar_urls: "http://www.similar.com",
       )
 
       expect(Audit.find(audit_with_similar_content.id).similar_urls).to eq("http://www.similar.com")
@@ -56,7 +56,7 @@ module Audits
       result = SaveAudit.call(
         attributes: attributes,
         content_id: similar_content_item.content_id,
-        user_uid: user.uid
+        user_uid: user.uid,
       )
 
       expect(result.audit).to eq(audit_with_similar_content)

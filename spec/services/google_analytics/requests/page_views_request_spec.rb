@@ -17,8 +17,8 @@ module GoogleAnalytics
               {
                 metrics: [
                   {
-                    expression: "ga:uniquePageviews"
-                  }
+                    expression: "ga:uniquePageviews",
+                  },
                 ],
                 view_id: "12345678",
                 dimension_filter_clauses: [
@@ -27,24 +27,24 @@ module GoogleAnalytics
                       {
                         expressions: ["/check-uk-visa"],
                         dimension_name: "ga:pagePath",
-                        operator: "EXACT"
-                      }
-                    ]
-                  }
+                        operator: "EXACT",
+                      },
+                    ],
+                  },
                 ],
                 dimensions: [
                   {
-                    name: "ga:pagePath"
-                  }
+                    name: "ga:pagePath",
+                  },
                 ],
                 date_ranges: [
                   {
                     start_date: "7daysAgo",
-                    end_date: "today"
-                  }
-                ]
-              }
-            ]
+                    end_date: "today",
+                  },
+                ],
+              },
+            ],
           }.deep_stringify_keys!
         end
 
@@ -56,7 +56,7 @@ module GoogleAnalytics
           request = PageViewsRequest.new.build(
             base_paths: ["/check-uk-visa"],
             start_dates: ["2016/11/22"],
-            end_date: "2016/12/22"
+            end_date: "2016/12/22",
             )
 
           expect(request.as_json).to include(page_views_request)

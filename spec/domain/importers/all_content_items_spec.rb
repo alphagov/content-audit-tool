@@ -8,8 +8,8 @@ RSpec.describe Importers::AllContentItems do
         ])
   end
 
-  describe '#run' do
-    it 'creates a job for each content item to import' do
+  describe "#run" do
+    it "creates a job for each content item to import" do
       expect(ImportItemJob).to receive(:perform_async).with("id-123", "en", "2")
       expect(ImportItemJob).to receive(:perform_async).with("id-456", "cy", "3")
 

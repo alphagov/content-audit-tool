@@ -28,7 +28,7 @@ RSpec.feature "Analytics", type: :feature do
         expect(selects).not_to be_empty
 
         selects.each do |select|
-          expect(select['data-tracking-id'].blank?).to be(false)
+          expect(select["data-tracking-id"].blank?).to be(false)
         end
       end
     end

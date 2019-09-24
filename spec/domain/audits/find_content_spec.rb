@@ -3,19 +3,19 @@ module Audits
     let!(:content_items) { create_list(:content_item, 210) }
     let!(:user) { create(:user) }
 
-    describe '#all' do
+    describe "#all" do
       subject(:relation) { described_class.all(filter) }
 
-      let(:filter) { Filter.new(allocated_to: 'anyone') }
+      let(:filter) { Filter.new(allocated_to: "anyone") }
 
-      it 'returns all filtered content items' do
+      it "returns all filtered content items" do
         expect(relation).to match_array(content_items)
       end
     end
 
-    describe '#batch' do
+    describe "#batch" do
       let(:batch_size) { 105 }
-      let(:filter) { Filter.new(sort: 'id', sort_direction: 'asc') }
+      let(:filter) { Filter.new(sort: "id", sort_direction: "asc") }
       let(:from_page) { 2 }
 
       subject(:relation) {
@@ -26,12 +26,12 @@ module Audits
         )
       }
 
-      it 'returns a batch of filtered content items offset from the given page' do
+      it "returns a batch of filtered content items offset from the given page" do
         expect(relation)
           .to match_array(content_items.sort_by(&:id)[100...205])
       end
 
-      context 'with a complex filter' do
+      context "with a complex filter" do
         let!(:content_items) do
           Array.new(500) do
             [
@@ -46,12 +46,12 @@ module Audits
           Filter.new(
             allocated_to: :no_one,
             audit_status: :non_audited,
-            sort: 'id',
-            sort_direction: 'asc'
+            sort: "id",
+            sort_direction: "asc",
           )
         end
 
-        it 'returns a batch of filtered content items' do
+        it "returns a batch of filtered content items" do
           expected_content_items = content_items
                                      .map(&:reload)
                                      .reject { |content_item| content_item.allocation.present? }
@@ -63,21 +63,21 @@ module Audits
       end
     end
 
-    describe '#paged' do
+    describe "#paged" do
       subject(:relation) { described_class.paged(filter) }
 
       let(:filter) do
-        Filter.new(allocated_to: 'anyone', sort: 'id', sort_direction: 'asc',
+        Filter.new(allocated_to: "anyone", sort: "id", sort_direction: "asc",
                    page: 3, per_page: 10)
       end
 
-      it 'returns the next page of filtered content items' do
+      it "returns the next page of filtered content items" do
         expect(relation)
           .to match_array(content_items.sort_by(&:id)[20...30])
       end
     end
 
-    describe '#my_content' do
+    describe "#my_content" do
       subject(:relation) { described_class.users_unaudited_content(user.uid) }
 
       before do
@@ -86,20 +86,20 @@ module Audits
         create(:allocation, user: user, content_item: Item.third)
       end
 
-      it 'returns my content' do
+      it "returns my content" do
         expect(relation).to match_array(content_items.first(3))
       end
     end
 
-    describe '#query' do
+    describe "#query" do
       subject(:relation) { described_class.query(filter) }
 
       before { allow(Query).to receive(:new) { query } }
 
-      let(:filter) { Filter.new(allocated_to: 'anyone') }
-      let(:query) { spy('Query') }
+      let(:filter) { Filter.new(allocated_to: "anyone") }
+      let(:query) { spy("Query") }
 
-      it 'returns a content query based on the supplied filter' do
+      it "returns a content query based on the supplied filter" do
         relation
 
         expect(query).to have_received(:after).with(filter.after)

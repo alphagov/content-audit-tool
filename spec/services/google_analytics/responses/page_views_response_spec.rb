@@ -10,7 +10,7 @@ RSpec.describe GoogleAnalytics::Responses::PageViewsResponse do
         base_path: "/marriage-abroad",
         one_month_page_views: 500,
         six_months_page_views: 6000,
-      }
+      },
     ])
   end
 
@@ -26,7 +26,7 @@ RSpec.describe GoogleAnalytics::Responses::PageViewsResponse do
         base_path: "/marriage-abroad",
         one_month_page_views: 500,
         six_months_page_views: 6000,
-      }
+      },
     ]
 
     expect(page_views).to eq(expected_response)

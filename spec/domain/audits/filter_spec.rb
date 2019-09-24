@@ -14,52 +14,52 @@ module Audits
     it { is_expected.to respond_to(:title) }
     it { is_expected.to respond_to(:topics) }
 
-    context 'initialized with blank organisations' do
-      subject { described_class.new(organisations: '') }
+    context "initialized with blank organisations" do
+      subject { described_class.new(organisations: "") }
 
       it { is_expected.to have_attributes(organisations: []) }
     end
 
-    context 'initialized with blank topics' do
-      subject { described_class.new(topics: '') }
+    context "initialized with blank topics" do
+      subject { described_class.new(topics: "") }
 
       it { is_expected.to have_attributes(topics: []) }
     end
 
-    describe '.allocated_policy' do
+    describe ".allocated_policy" do
       subject { described_class.new(allocated_to: allocated_to) }
 
-      context 'allocated to no one' do
-        let(:allocated_to) { 'no_one' }
+      context "allocated to no one" do
+        let(:allocated_to) { "no_one" }
 
         it {
           is_expected.to have_attributes(allocated_policy: Policies::Unallocated)
         }
       end
 
-      context 'allocated to anyone' do
-        let(:allocated_to) { 'anyone' }
+      context "allocated to anyone" do
+        let(:allocated_to) { "anyone" }
 
         it { is_expected.to have_attributes(allocated_policy: Policies::NoPolicy) }
       end
 
-      context 'allocated to someone' do
-        let(:allocated_to) { 'someone' }
+      context "allocated to someone" do
+        let(:allocated_to) { "someone" }
 
         it { is_expected.to have_attributes(allocated_policy: Policies::Allocated) }
       end
 
-      context 'allocated to not available' do
+      context "allocated to not available" do
         let(:allocated_to) { nil }
 
         it { is_expected.to have_attributes(allocated_policy: Policies::NoPolicy) }
       end
     end
 
-    describe '.audited_policy' do
+    describe ".audited_policy" do
       subject { described_class.new(audit_status: audit_status) }
 
-      context 'audited' do
+      context "audited" do
         let(:audit_status) { :audited }
 
         it {
@@ -67,47 +67,47 @@ module Audits
         }
       end
 
-      context 'not audited' do
+      context "not audited" do
         let(:audit_status) { :non_audited }
 
         it { is_expected.to have_attributes(audited_policy: Policies::NonAudited) }
       end
 
-      context 'audit status not available' do
+      context "audit status not available" do
         let(:audit_status) { nil }
 
         it { is_expected.to have_attributes(audited_policy: Policies::NoPolicy) }
       end
     end
 
-    context 'with allocated to' do
+    context "with allocated to" do
       subject { described_class.new(allocated_to: :double) }
 
-      it { is_expected.to have_attributes(allocated_to: 'double') }
+      it { is_expected.to have_attributes(allocated_to: "double") }
     end
 
-    context 'with audit status' do
-      subject { described_class.new(audit_status: 'double') }
+    context "with audit status" do
+      subject { described_class.new(audit_status: "double") }
 
       it { is_expected.to have_attributes(audit_status: :double) }
     end
 
-    context 'with page' do
-      subject { described_class.new(page: '1') }
+    context "with page" do
+      subject { described_class.new(page: "1") }
 
       it { is_expected.to have_attributes(page: 1) }
     end
 
-    context 'with per page' do
-      subject { described_class.new(per_page: '10') }
+    context "with per page" do
+      subject { described_class.new(per_page: "10") }
 
       it { is_expected.to have_attributes(per_page: 10) }
     end
 
-    context 'with sort criteria' do
-      subject { described_class.new(sort: 'foo', sort_direction: 'asc') }
+    context "with sort criteria" do
+      subject { described_class.new(sort: "foo", sort_direction: "asc") }
 
-      it { is_expected.to have_attributes(sort_by: 'foo_asc') }
+      it { is_expected.to have_attributes(sort_by: "foo_asc") }
     end
   end
 end

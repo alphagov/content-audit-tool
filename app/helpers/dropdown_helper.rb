@@ -26,7 +26,7 @@ module DropdownHelper
 
     topic_options = Item
                       .includes(links: %i(target))
-                      .where(document_type: 'topic', links: { link_type: Link::PARENT })
+                      .where(document_type: "topic", links: { link_type: Link::PARENT })
                       .map(&topic_option_attributes)
                       .sort_by { |parent_title, title, _| [parent_title, title] }
                       .map { |parent_title, title, content_id| ["#{parent_title}: #{title}", content_id] }
@@ -54,11 +54,11 @@ module DropdownHelper
     selected = current_user.uid if selected.nil?
 
     additional_options = [
-      ['Me', current_user.uid],
-      ['No one', :no_one],
+      ["Me", current_user.uid],
+      ["No one", :no_one],
     ]
 
-    additional_options << ['Anyone', :anyone] if include_anyone
+    additional_options << ["Anyone", :anyone] if include_anyone
 
     allocation_options = FindOrganisationUsers
                            .call(organisation_slug: current_user.organisation_slug)

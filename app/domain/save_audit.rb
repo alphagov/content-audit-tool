@@ -28,7 +28,7 @@ class SaveAudit
     Result.new(
       audit,
       content_item,
-      success
+      success,
     )
   end
 

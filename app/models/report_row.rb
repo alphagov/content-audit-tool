@@ -2,7 +2,7 @@ class ReportRow < ApplicationRecord
   include FormatHelper
 
   belongs_to :content_item, primary_key: :content_id, foreign_key: :content_id,
-             class_name: 'Item'
+             class_name: "Item"
 
   def self.precompute(content_item)
     find_or_initialize_by(content_item: content_item).precompute
@@ -36,7 +36,7 @@ class ReportRow < ApplicationRecord
   end
 
   def audited
-    content_item.audit.present? ? 'Audited' : 'Not audited'
+    content_item.audit.present? ? "Audited" : "Not audited"
   end
 
   def title

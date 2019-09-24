@@ -1,5 +1,5 @@
-require 'gds_api/exceptions'
-require 'google/apis/analyticsreporting_v4'
+require "gds_api/exceptions"
+require "google/apis/analyticsreporting_v4"
 
 class ApplicationJob
   include Sidekiq::Worker

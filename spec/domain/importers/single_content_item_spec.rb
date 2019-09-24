@@ -51,15 +51,15 @@ RSpec.describe Importers::SingleContentItem do
 
       expect(
         content_item_links.where(
-          link_type: "organisations"
-        ).pluck(:target_content_id)
-      ).to contain_exactly('org-id-1', 'org-id-2')
+          link_type: "organisations",
+        ).pluck(:target_content_id),
+      ).to contain_exactly("org-id-1", "org-id-2")
 
       expect(
         content_item_links.where(
-          link_type: "taxons"
-        ).pluck(:target_content_id)
-      ).to contain_exactly('taxon-id-1', 'taxon-id-2')
+          link_type: "taxons",
+        ).pluck(:target_content_id),
+      ).to contain_exactly("taxon-id-1", "taxon-id-2")
     end
   end
 

@@ -29,7 +29,7 @@ RSpec.describe Clients::PublishingAPI do
 
         result = subject.fetch_all(%[content_id locale])
         expect(result).to eq(
-          editions.map(&:deep_symbolize_keys)
+          editions.map(&:deep_symbolize_keys),
         )
       end
     end

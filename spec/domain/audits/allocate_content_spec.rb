@@ -27,7 +27,7 @@ module Audits
       create :content_item, content_id: "content_id_2"
 
       result = AllocateContent.call(user_uid: user.uid, content_ids: %w(content_id_1 content_id_2))
-      expect(result).to have_attributes(count: 2, user: 'John Smith')
+      expect(result).to have_attributes(count: 2, user: "John Smith")
     end
   end
 end

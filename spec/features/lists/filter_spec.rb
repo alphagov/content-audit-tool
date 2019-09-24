@@ -359,7 +359,7 @@ private
       expect(form).to have_topics_input(visible: :visible)
       expect(form).to have_topics_select(visible: :hidden)
 
-      form.topics_input.send_keys('PAY', :down, :enter)
+      form.topics_input.send_keys("PAY", :down, :enter)
     end
   end
 
@@ -448,20 +448,20 @@ private
   def given_content_with_known_topics
     create :user
 
-    business_tax = create(:topic, title: 'Business tax')
+    business_tax = create(:topic, title: "Business tax")
 
-    @paye = create(:topic, title: 'PAYE', parent: business_tax)
-    @vat = create(:topic, title: 'VAT', parent: business_tax)
+    @paye = create(:topic, title: "PAYE", parent: business_tax)
+    @vat = create(:topic, title: "VAT", parent: business_tax)
 
     create(
       :content_item,
-      title: 'Tell HMRC about a new employee',
+      title: "Tell HMRC about a new employee",
       topics: @paye,
     )
 
     create(
       :content_item,
-      title: 'VAT registration',
+      title: "VAT registration",
       topics: @vat,
     )
   end
@@ -491,7 +491,7 @@ private
   end
 
   def then_the_search_box_still_shows_the_search_query
-    expect(@audit_content_page).to have_field(:query, with: 'some text')
+    expect(@audit_content_page).to have_field(:query, with: "some text")
   end
 
   def and_filtering_by_guide_type_from_all_content

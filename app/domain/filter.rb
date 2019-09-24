@@ -11,7 +11,7 @@ Filter = Struct.new(
   :sort_direction,
   :theme_id,
   :title,
-  :topics
+  :topics,
 ) do
   def initialize(hash = {})
     hash.each do |key, value|
@@ -43,9 +43,9 @@ Filter = Struct.new(
   end
 
   def allocated_policy
-    if allocated_to == 'no_one'
+    if allocated_to == "no_one"
       Policies::Unallocated
-    elsif allocated_to == 'anyone' || allocated_to.blank?
+    elsif allocated_to == "anyone" || allocated_to.blank?
       Policies::NoPolicy
     else
       Policies::Allocated

@@ -7,13 +7,13 @@ module Audits
 
     let(:filter) do
       Filter.new(
-        allocated_to: 'anyone',
-        sort: 'id',
+        allocated_to: "anyone",
+        sort: "id",
         sort_direction: :asc,
       )
     end
 
-    it 'returns the next filtered content item relative to the supplied item' do
+    it "returns the next filtered content item relative to the supplied item" do
       expect(next_item).to eq(content_items[6])
     end
   end

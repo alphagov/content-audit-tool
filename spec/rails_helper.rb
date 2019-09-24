@@ -1,7 +1,7 @@
 # Run code coverage reporting on Jenkins
 if ENV["TEST_COVERAGE"] == "true"
-  require 'simplecov'
-  SimpleCov.start 'rails'
+  require "simplecov"
+  SimpleCov.start "rails"
 end
 
 ENV["RAILS_ENV"] ||= "test"
@@ -61,4 +61,4 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
+Dir["./spec/support/**/*.rb"].sort.each { |f| require f }

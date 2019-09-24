@@ -61,7 +61,7 @@ RSpec.feature "Navigation", type: :feature do
     let(:filter_params) do
       {
         allocated_to: me.uid,
-        audit_status: 'non_audited',
+        audit_status: "non_audited",
         primary: true,
       }
     end
@@ -130,8 +130,8 @@ RSpec.feature "Navigation", type: :feature do
       perform_audit
 
       expected = content_item_audit_path(jemima_puddle_duck,
-                                         allocated_to: 'anyone',
-                                         audit_status: 'non_audited',
+                                         allocated_to: "anyone",
+                                         audit_status: "non_audited",
                                          primary: true)
       expect(current_url).to end_with(expected)
 
@@ -140,8 +140,8 @@ RSpec.feature "Navigation", type: :feature do
   end
 
   def answer_question(question, answer)
-    find('p', text: question)
-      .first(:xpath, '..//..')
+    find("p", text: question)
+      .first(:xpath, "..//..")
       .choose(answer)
   end
 

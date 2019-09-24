@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'allocations#index'
+  root to: "allocations#index"
 
   resources :content_items, only: %w(index show), param: :content_id do
     get :audit, to: "audits#show"
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resource :audits
 
-  get '/my-content', to: "audits#index", as: 'my_content'
+  get "/my-content", to: "audits#index", as: "my_content"
   resource :report, only: :show
   resource :guidance, only: :show
 
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   # rack-proxy does not work with webmock, so disable it for tests: https://github.com/ncr/rack-proxy#warning
   if Rails.env.test?
-    get "#{Proxies::IframeAllowingProxy::PROXY_BASE_PATH}*base_path", to: proc { [200, {}, ['Proxy disabled in Test environment']] }
+    get "#{Proxies::IframeAllowingProxy::PROXY_BASE_PATH}*base_path", to: proc { [200, {}, ["Proxy disabled in Test environment"]] }
   else
     mount Proxies::IframeAllowingProxy.new => Proxies::IframeAllowingProxy::PROXY_BASE_PATH
   end

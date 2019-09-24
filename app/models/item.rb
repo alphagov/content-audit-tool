@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  self.table_name = 'content_items'
+  self.table_name = "content_items"
 
   has_one :audit, primary_key: :content_id, foreign_key: :content_id, class_name: "Audit"
   has_one :allocation, primary_key: :content_id, foreign_key: :content_id, class_name: "Allocation"

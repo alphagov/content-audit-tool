@@ -4,7 +4,7 @@ module Audits
 
     let(:scope) { Item.all }
 
-    it 'returns an unmodified scope' do
+    it "returns an unmodified scope" do
       expect(no_policy).to match_array(scope)
     end
   end
