@@ -1,4 +1,4 @@
-FROM ruby:2.6.3
+FROM ruby:2.6.5
 MAINTAINER Government Digital Service <govuk-dev@digital.cabinet-office.gov.uk>
 
 RUN \
