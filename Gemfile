@@ -14,7 +14,7 @@ gem 'plek'
 # Third party gems
 gem 'activerecord-import'
 gem 'draper'
-gem 'google-api-client', '~> 0.33'
+gem 'google-api-client', '~> 0.34'
 gem 'httparty'
 gem 'jbuilder'
 gem 'jquery-rails'

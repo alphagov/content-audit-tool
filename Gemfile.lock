@@ -128,7 +128,7 @@ GEM
       warden-oauth2 (~> 0.0.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    google-api-client (0.33.2)
+    google-api-client (0.34.0)
       addressable (~> 2.5, >= 2.5.1)
       googleauth (~> 0.9)
       httpclient (>= 2.8.1, < 3.0)
@@ -539,7 +539,7 @@ DEPENDENCIES
   factory_bot_rails
   gds-api-adapters
   gds-sso
-  google-api-client (~> 0.33)
+  google-api-client (~> 0.34)
   govspeak
   govuk-lint (= 4.0.0)
   govuk_admin_template (~> 6.7)
